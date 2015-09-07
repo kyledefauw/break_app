@@ -1,0 +1,49 @@
+<div class="well">
+<div class="col-md-6">
+  <h2>Time to take a break!</h2>
+
+    <div id="example-timer"></div>
+    <p>Time Elapsed: <span id="time-elapsed">0</span>ms</p>
+
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="stop">Stop</button>
+
+    <script>
+      $(document).on("ready", function() {
+        $("#example-timer").circletimer({
+          onComplete: function() {
+            alert("Time is up!");
+          },
+          onUp<a href="http://www.jqueryscript.net/time-clock/">date</a>: function(elapsed) {
+            $("#time-elapsed").html(Math.round(elapsed));
+          },
+          timeout: 5000
+        });
+
+        $("#start").on("click", function() {
+          $("#example-timer").circletimer("start");
+        });
+
+        $("#pause").on("click", function() {
+          $("#example-timer").circletimer("pause");
+        });
+
+        $("#stop").on("click", function() {
+          $("#example-timer").circletimer("stop");
+        });
+      })
+
+      $("#example-timer").circletimer({
+
+        // timeout
+        timeout: 5000,
+
+        // callbacks
+        onComplete: (function() {}),
+        onUpdate: (function() {})
+
+      });
+    </script>
+  </div>
+</div>
