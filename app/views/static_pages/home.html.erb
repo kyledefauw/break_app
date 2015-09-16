@@ -50,9 +50,8 @@
   <body>
     <h1></h1>
     <center>
-      <div class="col-md-offset-3 col-md-6 well">
+      <div class="col-md-offset-4 col-md-4 well">
         <div><h2>Time to take a break!</h2>
-          <br>
           <h4><span id="time"></span> minutes</h4>
           <button id="timer" onclick="timer()">Start</button>
           <button onclick="reset()">Reset</button>
@@ -61,7 +60,6 @@
 
           <p>
             <em>
-              <script src="myScript.js"></script>
               <span id="quote_array"></span>
             </em>
           </p>
@@ -70,7 +68,8 @@
     </center>
     <div>
     <!-- <%= link_to "Stop/Start", '/buttons' %> -->
-    <%= link_to "Custom", '/custom' %>
+    <%= link_to "Custom", '/custom', {:style=>'color:#FFFFFF;', :class => "css_class"} %>
+    <br>
     <%= link_to "Circle Timer", '/codepen' %>
     </div>
   </body>
