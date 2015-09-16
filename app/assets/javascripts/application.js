@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require circletimer.min
+//= require TimeCircles
 //= require_tree .

@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
 
+  get '/buttons', to: 'static_pages#buttons'
+  get '/custom', to: 'static_pages#custom'
+  get '/codepen', to: 'static_pages#codepen'
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,49 +1,69 @@
-<div class="well">
-<div class="col-md-6">
-  <h2>Time to take a break!</h2>
+<html>
 
-    <div id="example-timer"></div>
-    <p>Time Elapsed: <span id="time-elapsed">0</span>ms</p>
-
-    <button id="start">Start</button>
-    <button id="pause">Pause</button>
-    <button id="stop">Stop</button>
+  <head>
 
     <script>
-      $(document).on("ready", function() {
-        $("#example-timer").circletimer({
-          onComplete: function() {
-            alert("Time is up!");
-          },
-          onUp<a href="http://www.jqueryscript.net/time-clock/">date</a>: function(elapsed) {
-            $("#time-elapsed").html(Math.round(elapsed));
-          },
-          timeout: 5000
-        });
+    function startTimer(duration, display) {
+    var start = Date.now(),
+        diff,
+        minutes,
+        seconds;
+    function timer() {
+        // get the number of seconds that have elapsed since
+        // startTimer() was called
+        diff = duration - (((Date.now() - start) / 1000) | 0);
 
-        $("#start").on("click", function() {
-          $("#example-timer").circletimer("start");
-        });
+        // does the same job as parseInt truncates the float
+        minutes = (diff / 60) | 0;
+        seconds = (diff % 60) | 0;
 
-        $("#pause").on("click", function() {
-          $("#example-timer").circletimer("pause");
-        });
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        $("#stop").on("click", function() {
-          $("#example-timer").circletimer("stop");
-        });
-      })
+        display.textContent = minutes + ":" + seconds;
 
-      $("#example-timer").circletimer({
+        if (diff <= 0) {
+          document.getElementById("timer").innerHTML = "Resume";
 
-        // timeout
-        timeout: 5000,
+            // add one second so that the count down starts at the full duration
+            // example 05:00 not 04:59
+            start = Date.now() + 1000;
+        }else{
+          document.getElementById("timer").innerHTML = "Pause";
+        }
+    };
 
-        // callbacks
-        onComplete: (function() {}),
-        onUpdate: (function() {})
+    // we don't want to wait a full second before the timer starts
+    timer();
+    setInterval(timer, 1000);
+    }
 
-      });
+      window.onload = function () {
+          var fiveMinutes = 60 * 5,
+              display = document.querySelector('#time');
+          startTimer(fiveMinutes, display);
+      };
     </script>
-  </div>
-</div>
+  </head>
+
+  <body>
+    <center>
+      <div class="col-md-offset-3 col-md-6 well">
+        <div><h2>Time to take a break!</h2>
+          <br>
+          <h4><span id="time"></span> minutes</h4>
+          <button id="timer" onclick="timer()">Start</button>
+          <button onclick="reset()">Reset</button>
+          <br>
+          <br>
+          <p><em> "Drink a glass of a water" </em></p>
+        </div>
+      </div>
+    </center>
+
+  </body>
+
+</html>
+<%= link_to "Stop/Start", '/buttons' %>
+<%= link_to "Custom", '/custom' %>
+<%= link_to "CodePen", '/codepen' %>

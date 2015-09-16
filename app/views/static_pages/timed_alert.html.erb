@@ -1,0 +1,32 @@
+<
+      <script type="text/javascript">
+      var mins_alert=10;
+
+      function alert_func(){
+      	alert("in "+mins_alert+" minutes you will have an appointment!");
+      	caller();
+      }
+
+      function caller(){
+      	//get the current date
+      	var now = new Date();
+
+      	//get the next event (these values should come from a database or somewhere, and be update each time that the caller function is run...)
+      	var month_str="february";
+      	var day=28;
+      	var year=2013;
+      	var hours=22;
+      	var mins=57;
+      	var secs=0;
+      	var next_event = new Date(month_str+day+", "+year+" "+hours+":"+mins+":"+secs);
+
+      //	alert("now:\n"+now);
+      //	alert("next_event:\n"+next_event);
+
+      	var delta_millisecs = next_event.getTime()-now.getTime();	//difference, in milliseconds, between these the current date and the date of the next appointment
+      	var delta_t = delta_millisecs-mins_alert*60*1000;		//number of milliseconds between now to the alert event
+      	if (delta_t>0){
+      		setTimeout("alert_func()", delta_t);
+      	}
+      }
+      </script>
