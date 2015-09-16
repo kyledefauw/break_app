@@ -51,10 +51,46 @@
     <h1></h1>
     <center>
       <div class="col-md-offset-4 col-md-4 well">
-        <div><h2>Time to take a break!</h2>
-          <h4><span id="time"></span> minutes</h4>
-          <button id="timer" onclick="timer()">Start</button>
-          <button onclick="reset()">Reset</button>
+        <div><h1>Time to take a break!</h1>
+          <div id="DateCountdown" data-timer="301"></div>
+          <button class="btn btn-success start">Start Timer</button>
+          <button class="btn btn-danger stop">Stop Timer</button>
+          <button class="btn btn-info restart">Restart</button>
+            <script>
+             $("#DateCountdown").TimeCircles({
+               "animation": "smooth",
+               "start": false,
+               "bg_width": 1.2,
+               "fg_width": 0.1,
+               "circle_bg_color": "#60686F",
+               "total_duration": "Auto",
+               "time": {
+                   "Days": {
+                       "text": "Days",
+                       "color": "#FFCC66",
+                       "show": false
+                   },
+                   "Hours": {
+                       "text": "Hours",
+                       "color": "#99CCFF",
+                       "show": false
+                   },
+                   "Minutes": {
+                       "text": "Minutes",
+                       "color": "#00CC66",
+                       "show": true
+                   },
+                   "Seconds": {
+                       "text": "Seconds",
+                       "color": "#0099FF",
+                       "show": true
+                   }
+               }
+           });
+            $(".start").click(function(){ $("#DateCountdown").TimeCircles().start(); });
+            $(".stop").click(function(){ $("#DateCountdown").TimeCircles().stop(); });
+            $(".restart").click(function(){ $("#DateCountdown").TimeCircles().restart(); });
+           </script>
           <br>
           <br>
 

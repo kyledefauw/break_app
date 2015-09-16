@@ -17,9 +17,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "TimeCircles";
+@import "readme";
 
 .well {
   background-color: #201a16;
+  opacity: 90%;
   color: #fff;
   border-radius: 25px;
   }
@@ -27,4 +29,10 @@
 button {
   background-color: #fff;
   color: #201a16;
+}
+
+#DateCountdown {
+  width: 100%;
+  height: 100%;
+  margin: auto
 }
