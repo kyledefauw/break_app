@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require TimeCircles.js
-//= require timecirclescript
 //= require_tree .

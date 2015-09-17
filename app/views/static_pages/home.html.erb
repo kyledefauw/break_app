@@ -34,7 +34,6 @@
         }
     };
 
-    // we don't want to wait a full second before the timer starts
     timer();
     setInterval(timer, 1000);
     }
@@ -44,18 +43,23 @@
               display = document.querySelector('#time');
           startTimer(fiveMinutes, display);
       };
+
+
     </script>
+    <!-- <img src="/Users/kyledefauw/workspace/break_app/app/assets/images/val_logo.jpeg" id="valLogo"> -->
+
   </head>
 
   <body>
     <h1></h1>
     <center>
       <div class="col-md-offset-4 col-md-4 well">
-        <div><h1>Time to take a break!</h1>
-          <div id="DateCountdown" data-timer="301"></div>
+        <div><h1>Time to hit the pause button!</h1>
+          <div id="DateCountdown" data-timer="5"></div>
           <button class="btn btn-success start">Start Timer</button>
           <button class="btn btn-danger stop">Stop Timer</button>
           <button class="btn btn-info restart">Restart</button>
+
             <script>
              $("#DateCountdown").TimeCircles({
                "animation": "smooth",
@@ -63,7 +67,9 @@
                "bg_width": 1.2,
                "fg_width": 0.1,
                "circle_bg_color": "#60686F",
+               "count_past_zero": false,
                "total_duration": "Auto",
+               "direction": "Counter-clockwise",
                "time": {
                    "Days": {
                        "text": "Days",
@@ -87,6 +93,14 @@
                    }
                }
            });
+          //  $("#DateCountdown").TimeCircles().addListener(function(unit, amount, total){
+          //  if(total == 0) {
+          //    $("#DateCountdown").TimeCircles().end().fadeOut();
+          //    jQuery(function(){
+          //      $("#valLogo").fadeIn();
+          //    });
+          //  }
+          //  });
             $(".start").click(function(){ $("#DateCountdown").TimeCircles().start(); });
             $(".stop").click(function(){ $("#DateCountdown").TimeCircles().stop(); });
             $(".restart").click(function(){ $("#DateCountdown").TimeCircles().restart(); });
