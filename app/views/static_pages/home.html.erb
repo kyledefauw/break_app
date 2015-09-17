@@ -2,52 +2,6 @@
 <html>
 
   <head>
-
-    <script>
-    function startTimer(duration, display) {
-    var start = Date.now(),
-        diff,
-        minutes,
-        seconds;
-    function timer() {
-        // get the number of seconds that have elapsed since
-        // startTimer() was called
-        diff = duration - (((Date.now() - start) / 1000) | 0);
-
-        // does the same job as parseInt truncates the float
-        minutes = (diff / 60) | 0;
-        seconds = (diff % 60) | 0;
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (diff <= 0) {
-          document.getElementById("timer").innerHTML = "Resume";
-
-            // add one second so that the count down starts at the full duration
-            // example 05:00 not 04:59
-            start = Date.now() + 1000;
-        }else{
-          document.getElementById("timer").innerHTML = "Pause";
-        }
-    };
-
-    timer();
-    setInterval(timer, 1000);
-    }
-
-      window.onload = function () {
-          var fiveMinutes = 60 * 5,
-              display = document.querySelector('#time');
-          startTimer(fiveMinutes, display);
-      };
-
-
-    </script>
-    <!-- <img src="/Users/kyledefauw/workspace/break_app/app/assets/images/val_logo.jpeg" id="valLogo"> -->
-
   </head>
 
   <body>
@@ -93,26 +47,29 @@
                    }
                }
            });
-          //  $("#DateCountdown").TimeCircles().addListener(function(unit, amount, total){
-          //  if(total == 0) {
-          //    $("#DateCountdown").TimeCircles().end().fadeOut();
-          //    jQuery(function(){
-          //      $("#valLogo").fadeIn();
-          //    });
-          //  }
-          //  });
+
+           $("#DateCountdown").TimeCircles().addListener(function(unit, amount, total){
+             if(total == 0) {
+               var gong = new Audio("assets/gong.mp3");
+                   gong.play()
+              //  $("#DateCountdown").TimeCircles().end().fadeOut();
+              //  $('.logo').click(function(){ $("#logo").fadeIn(); });
+             }
+           });
             $(".start").click(function(){ $("#DateCountdown").TimeCircles().start(); });
             $(".stop").click(function(){ $("#DateCountdown").TimeCircles().stop(); });
             $(".restart").click(function(){ $("#DateCountdown").TimeCircles().restart(); });
            </script>
           <br>
           <br>
-
           <p>
             <em>
               <h4><span id="quote_array"></span></h4>
             </em>
           </p>
+          <img id='logo' src="assets/logo.jpeg" max-width="150px" height="150px" >
+          <br>
+          <%= link_to "www.valeriedambrosio.com", "http://www.valeriedambrosio.com/", class:"web-link" %>
         </div>
       </div>
     </center>
