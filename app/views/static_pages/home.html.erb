@@ -9,7 +9,7 @@
     <center>
       <div class="col-md-offset-4 col-md-4 well">
         <div><h1>Time to hit the pause button!</h1>
-          <div id="DateCountdown" data-timer="5"></div>
+          <div id="DateCountdown" data-timer="301"></div>
           <button class="btn btn-success start">Start Timer</button>
           <button class="btn btn-danger stop">Stop Timer</button>
           <button class="btn btn-info restart">Restart</button>
@@ -48,12 +48,15 @@
                }
            });
 
-           $("#DateCountdown").TimeCircles().addListener(function(unit, amount, total){
-             if(total == 0) {
-               var gong = new Audio("assets/gong.mp3");
-                   gong.play()
-              //  $("#DateCountdown").TimeCircles().end().fadeOut();
-              //  $('.logo').click(function(){ $("#logo").fadeIn(); });
+          $("#DateCountdown").TimeCircles().addListener(function(unit, amount, total){
+            if(total == 0) {
+              var gong = new Audio("assets/gong.mp3");
+                  gong.play();
+              $("#DateCountdown").TimeCircles().end().fadeOut();
+              // var myImage = new Image(200, 200);
+              //   myImage.src = 'assets/logo.jpeg';
+              //   $('myImage').addClass('fadeIn-3s');
+              //   myImage;
              }
            });
             $(".start").click(function(){ $("#DateCountdown").TimeCircles().start(); });
